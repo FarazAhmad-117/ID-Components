@@ -1,0 +1,30 @@
+{
+  "name": "@id-components/tokens",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": ["dist/tokens.css"],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup && node scripts/copy-css.mjs",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "tsup": "8.3.5",
+    "typescript": "5.7.3",
+    "vitest": "2.1.9"
+  }
+}

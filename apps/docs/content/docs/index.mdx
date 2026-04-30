@@ -1,0 +1,48 @@
+---
+title: Introduction
+description: GSAP-native React components with motion personality.
+---
+
+# ID-Components
+
+ID-Components is an open-source React UI component library powered by GSAP animations. Components
+ship with two motion personalities that you can switch with a single prop.
+
+## Motion Personalities
+
+| Intent | Behavior | Use case |
+|---|---|---|
+| `playful` (default) | Springy, expressive, elastic easings | Marketing, consumer apps |
+| `professional` | Tight, efficient, power easings | Dashboards, B2B tools |
+
+## How It Works
+
+Wrap your app (or a section of it) in `<MotionProvider>`:
+
+```tsx
+import { MotionProvider } from '@id-components/motion';
+import { Button } from '@id-components/core';
+
+export default function App() {
+  return (
+    <MotionProvider intent="playful">
+      <Button variant="primary">Get started</Button>
+    </MotionProvider>
+  );
+}
+```
+
+Switch to `professional` for business UIs:
+
+```tsx
+<MotionProvider intent="professional">
+  <Button variant="secondary">Save changes</Button>
+</MotionProvider>
+```
+
+## Packages
+
+- **`@id-components/core`** — production-ready components
+- **`@id-components/motion`** — `MotionProvider`, `useMotion`, `useTimeline`, presets
+- **`@id-components/tokens`** — design tokens (CSS vars + TypeScript)
+- **`@id-components/utils`** — `cn()` and shared helpers

@@ -1,0 +1,78 @@
+---
+title: Getting Started
+description: Install ID-Components and render your first animated component.
+---
+
+# Getting Started
+
+## Prerequisites
+
+- Node 20+
+- React 19+
+- pnpm 9+ (recommended)
+
+## Installation
+
+```bash
+pnpm add @id-components/core @id-components/motion @id-components/tokens @id-components/utils
+pnpm add -D gsap @gsap/react
+```
+
+## Tailwind v4 Setup
+
+Import the token CSS in your global stylesheet:
+
+```css
+/* globals.css */
+@import 'tailwindcss';
+@import '@id-components/tokens/tokens.css';
+```
+
+No `tailwind.config.js` needed — ID-Components is CSS-first.
+
+## Wrap with MotionProvider
+
+```tsx
+// app/layout.tsx
+import { MotionProvider } from '@id-components/motion';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <MotionProvider intent="playful">
+          {children}
+        </MotionProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+## Render a Button
+
+```tsx
+import { Button } from '@id-components/core';
+
+export default function Page() {
+  return <Button variant="primary" size="md">Hello world</Button>;
+}
+```
+
+Hover and click the button — you'll see the `playful` spring interaction.
+
+## Switching Intent
+
+Override intent at any level of the tree:
+
+```tsx
+<MotionProvider intent="professional">
+  <Button>This button uses professional motion</Button>
+</MotionProvider>
+```
+
+Or pass `intent` directly on the component:
+
+```tsx
+<Button intent="professional">Inline override</Button>
+```

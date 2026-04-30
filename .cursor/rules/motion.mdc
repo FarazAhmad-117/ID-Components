@@ -1,0 +1,25 @@
+---
+description: Motion and animation conventions for the ID-Components motion system
+globs:
+  - packages/motion/**/*.ts
+  - packages/core/**/*.tsx
+---
+
+All animation goes through `@id-components/motion`. Direct `gsap` imports are forbidden in
+`packages/core`.
+
+Pattern:
+```ts
+const { presets, intent, reducedMotion } = useMotion();
+const ref = useRef<HTMLElement>(null);
+useTimeline(ref, (tl) => {
+  if (reducedMotion) return;
+  const p = presets[intent].hover;
+  tl.to(ref.current, { scale: p.scale, duration: p.duration, ease: p.ease });
+});
+```
+
+- Default intent is `'playful'`. `intent="professional"` is the explicit opt-out.
+- Always guard GSAP calls with `if (reducedMotion) return;`.
+- Motion presets in `packages/motion/src/index.ts` define durations and easings only.
+- Components own the actual `gsap.to()` / `tl.to()` calls — presets just supply the numbers.

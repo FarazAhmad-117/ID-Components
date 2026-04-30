@@ -1,0 +1,74 @@
+---
+title: Button
+description: An animated button with playful and professional motion personalities.
+---
+
+# Button
+
+An accessible, GSAP-animated button built on a native `<button>` element with Radix `Slot`
+support for polymorphism.
+
+## Import
+
+```ts
+import { Button } from '@id-components/core';
+```
+
+## Usage
+
+```tsx
+<Button variant="primary" size="md">Click me</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'primary' \| 'secondary' \| 'ghost'` | `'primary'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+| `intent` | `'playful' \| 'professional'` | from `MotionProvider` | Motion personality override |
+| `asChild` | `boolean` | `false` | Render as child element (Radix Slot) |
+| `className` | `string` | — | Additional CSS classes |
+| `disabled` | `boolean` | `false` | Disables interaction and motion |
+
+All other `<button>` HTML attributes are forwarded.
+
+## Motion Behavior
+
+### Playful (default)
+
+- **Hover:** `scale(1.05)` with `elastic.out(1, 0.5)` easing over 250ms
+- **Press:** `scale(0.95)` with `power2.out` over 100ms
+
+### Professional
+
+- **Hover:** `scale(1.02)` with `power1.out` over 200ms
+- **Press:** `scale(0.97)` with `power2.out` over 80ms
+
+Both intents respect `prefers-reduced-motion` — all GSAP calls are skipped when enabled.
+
+## Variants
+
+```tsx
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+```
+
+## Sizes
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+## As Link
+
+```tsx
+import Link from 'next/link';
+
+<Button asChild>
+  <Link href="/docs">Go to docs</Link>
+</Button>
+```
