@@ -1,12 +1,17 @@
 ---
 title: Button
-description: An animated button with playful and professional motion personalities.
+description: Accessible button with playful or professional motion, layered surfaces, and Radix Slot polymorphism.
 ---
+
+import {
+  ButtonDemosPlayful,
+  ButtonDemosProfessional,
+  ButtonDemosSizes,
+} from '@/components/button-demos';
 
 # Button
 
-An accessible, GSAP-animated button built on a native `<button>` element with Radix `Slot`
-support for polymorphism.
+Polished control for actions: **primary**, **secondary**, **ghost**, and **destructive** variants, three sizes, and motion that respects `MotionProvider` intent (`playful` magnetic + springy press vs `professional` crisp scale + shadow lift). Built on Tailwind v4 + design tokens; animation runs only through `@id-components/motion` (no `gsap` imports in `@id-components/core`).
 
 ## Import
 
@@ -14,61 +19,63 @@ support for polymorphism.
 import { Button } from '@id-components/core';
 ```
 
-## Usage
+## Live previews
 
-```tsx
-<Button variant="primary" size="md">Click me</Button>
-```
+### Professional (docs default)
+
+<ButtonDemosProfessional />
+
+### Playful
+
+<ButtonDemosPlayful />
+
+### Sizes
+
+<ButtonDemosSizes />
 
 ## Props
 
 | Prop | Type | Default | Description |
-|---|---|---|---|
-| `variant` | `'primary' \| 'secondary' \| 'ghost'` | `'primary'` | Visual style |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'ghost' \| 'destructive'` | `'primary'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and padding scale |
 | `intent` | `'playful' \| 'professional'` | from `MotionProvider` | Motion personality override |
-| `asChild` | `boolean` | `false` | Render as child element (Radix Slot) |
-| `className` | `string` | — | Additional CSS classes |
+| `asChild` | `boolean` | `false` | Merge props onto child (`Slot`) |
+| `className` | `string` | — | Merged with `cn()` |
 | `disabled` | `boolean` | `false` | Disables interaction and motion |
 
-All other `<button>` HTML attributes are forwarded.
+Native `<button>` attributes (`type`, `onClick`, `aria-*`, etc.) are forwarded. With `asChild`, render a child element (for example `Link`) and pass `type` only on the child when needed.
 
-## Motion Behavior
+## Motion
 
-### Playful (default)
+- **Playful:** elastic hover scale, magnetic `x`/`y` toward the pointer, quick press depth from motion presets.
+- **Professional:** subtle scale and lifted `boxShadow` on hover; tight press from presets.
+- **`prefers-reduced-motion`:** tweens are skipped when the provider reports reduced motion.
 
-- **Hover:** `scale(1.05)` with `elastic.out(1, 0.5)` easing over 250ms
-- **Press:** `scale(0.95)` with `power2.out` over 100ms
-
-### Professional
-
-- **Hover:** `scale(1.02)` with `power1.out` over 200ms
-- **Press:** `scale(0.97)` with `power2.out` over 80ms
-
-Both intents respect `prefers-reduced-motion` — all GSAP calls are skipped when enabled.
-
-## Variants
+## Usage
 
 ```tsx
-<Button variant="primary">Primary</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="ghost">Ghost</Button>
+import { Button } from '@id-components/core';
+import { MotionProvider } from '@id-components/motion';
+
+export function Example() {
+  return (
+    <MotionProvider intent="professional">
+      <Button variant="primary" size="md">
+        Continue
+      </Button>
+    </MotionProvider>
+  );
+}
 ```
 
-## Sizes
-
-```tsx
-<Button size="sm">Small</Button>
-<Button size="md">Medium</Button>
-<Button size="lg">Large</Button>
-```
-
-## As Link
+## As child (polymorphic)
 
 ```tsx
 import Link from 'next/link';
+import { Button } from '@id-components/core';
 
-<Button asChild>
-  <Link href="/docs">Go to docs</Link>
+<Button asChild variant="ghost">
+  <Link href="/docs">Back to docs</Link>
 </Button>
 ```

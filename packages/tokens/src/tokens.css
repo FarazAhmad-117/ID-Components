@@ -25,6 +25,15 @@
   --color-accent-900: #1e3a8a;
   --color-accent-950: #172554;
 
+  /* ─── Colors: Danger (destructive actions) ───────────────────────────────── */
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-200: #fecaca;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+  --color-danger-foreground: #ffffff;
+
   /* ─── Radius ──────────────────────────────────────────────────────────────── */
   --radius-none: 0px;
   --radius-sm: 4px;

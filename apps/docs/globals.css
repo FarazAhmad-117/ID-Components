@@ -1,2 +1,72 @@
 @import "tailwindcss";
 @import "@id-components/tokens/tokens.css";
+@import "fumadocs-ui/css/vitepress.css";
+@import "fumadocs-ui/css/preset.css";
+
+/* Match next-themes: class `dark` on <html> (Tailwind default `dark:` is prefers-color-scheme-only). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Scan app, MDX, local components, and library source for Tailwind classes
+   (three `../` would resolve outside the repo; core lives at ../../packages/core) */
+@source "./app/**/*.{ts,tsx}";
+@source "./content/**/*.{md,mdx}";
+@source "./components/**/*.{ts,tsx}";
+@source "../../packages/core/src/**/*.{ts,tsx}";
+
+/* ─── Editorial shell: align Fumadocs chrome with ID tokens (Linear-style) ─── */
+@layer base {
+  :root {
+    --color-fd-primary: var(--color-accent-600);
+    --color-fd-primary-foreground: #fff;
+    --color-fd-ring: var(--color-accent-500);
+    --color-fd-accent: color-mix(in oklab, var(--color-accent-600) 12%, transparent);
+    --color-fd-accent-foreground: var(--color-neutral-900);
+  }
+
+  .dark {
+    --color-fd-primary: var(--color-accent-500);
+    --color-fd-primary-foreground: var(--color-neutral-950);
+    --color-fd-ring: var(--color-accent-400);
+    --color-fd-accent: color-mix(in oklab, var(--color-accent-500) 18%, transparent);
+    --color-fd-accent-foreground: var(--color-neutral-50);
+  }
+
+  .prose {
+    line-height: 1.7;
+  }
+
+  .prose code,
+  .prose pre {
+    font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+      "DejaVu Sans Mono", monospace;
+    font-size: 0.9em;
+  }
+
+  .prose pre {
+    line-height: 1.55;
+  }
+}
+
+@layer components {
+  /* Sidebar / tree links: smooth hover, clearer active state */
+  [data-active] {
+    font-weight: 600;
+  }
+
+  a[data-active="true"],
+  button[data-active="true"] {
+    color: var(--color-fd-primary);
+  }
+
+  /* Isolate live component demos so layout/preview styles don’t leak into typography */
+  .idc-doc-demo {
+    isolation: isolate;
+  }
+
+  .idc-doc-demo :where(button) {
+    text-decoration: none;
+    text-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const m = require\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-ui/dist/mdx/index.js'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(node -e \"const p = require\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-core/package.json'\\); console.log\\(Object.keys\\(p.exports\\).filter\\(k => k.includes\\('source'\\) || k.includes\\('type'\\)\\)\\)\")",
+      "Bash(node -e \"const t = require\\('fs'\\).readFileSync\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-core/dist/source/index.d.ts', 'utf8'\\); console.log\\(t.slice\\(0, 3000\\)\\)\")",
+      "Bash(node -e \"const t = require\\('fs'\\).readFileSync\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-mdx/dist/index.d.ts', 'utf8'\\); console.log\\(t\\)\")",
+      "Bash(node -e \"const t = require\\('fs'\\).readFileSync\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-mdx/dist/shared-CfiiRctw.d.ts', 'utf8'\\); console.log\\(t.slice\\(0, 3000\\)\\)\")"
+    ]
+  }
+}
