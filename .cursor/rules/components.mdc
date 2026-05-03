@@ -1,0 +1,18 @@
+---
+description: Component authoring conventions for packages/core
+globs:
+  - packages/core/**/*.tsx
+---
+
+Every component in `packages/core` must:
+
+1. Use `React.forwardRef` and set `ComponentName.displayName`.
+2. Accept and forward a `className` prop — always merge with `cn()` from `@id-components/utils`.
+3. Define all style variants with `cva()` — no inline ternaries for class logic.
+4. Export its Props type.
+5. Be built on a Radix UI primitive where accessibility is critical.
+
+Never import `gsap` directly. Motion goes through `useMotion()` and `useTimeline()` from
+`@id-components/motion`.
+
+TypeScript strict: no `any`, no `!` non-null assertions without a comment explaining why.

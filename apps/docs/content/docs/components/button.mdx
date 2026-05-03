@@ -1,0 +1,81 @@
+---
+title: Button
+description: Accessible button with playful or professional motion, layered surfaces, and Radix Slot polymorphism.
+---
+
+import {
+  ButtonDemosPlayful,
+  ButtonDemosProfessional,
+  ButtonDemosSizes,
+} from '@/components/button-demos';
+
+# Button
+
+Polished control for actions: **primary**, **secondary**, **ghost**, and **destructive** variants, three sizes, and motion that respects `MotionProvider` intent (`playful` magnetic + springy press vs `professional` crisp scale + shadow lift). Built on Tailwind v4 + design tokens; animation runs only through `@id-components/motion` (no `gsap` imports in `@id-components/core`).
+
+## Import
+
+```ts
+import { Button } from '@id-components/core';
+```
+
+## Live previews
+
+### Professional (docs default)
+
+<ButtonDemosProfessional />
+
+### Playful
+
+<ButtonDemosPlayful />
+
+### Sizes
+
+<ButtonDemosSizes />
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'ghost' \| 'destructive'` | `'primary'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and padding scale |
+| `intent` | `'playful' \| 'professional'` | from `MotionProvider` | Motion personality override |
+| `asChild` | `boolean` | `false` | Merge props onto child (`Slot`) |
+| `className` | `string` | — | Merged with `cn()` |
+| `disabled` | `boolean` | `false` | Disables interaction and motion |
+
+Native `<button>` attributes (`type`, `onClick`, `aria-*`, etc.) are forwarded. With `asChild`, render a child element (for example `Link`) and pass `type` only on the child when needed.
+
+## Motion
+
+- **Playful:** elastic hover scale, magnetic `x`/`y` toward the pointer, quick press depth from motion presets.
+- **Professional:** subtle scale and lifted `boxShadow` on hover; tight press from presets.
+- **`prefers-reduced-motion`:** tweens are skipped when the provider reports reduced motion.
+
+## Usage
+
+```tsx
+import { Button } from '@id-components/core';
+import { MotionProvider } from '@id-components/motion';
+
+export function Example() {
+  return (
+    <MotionProvider intent="professional">
+      <Button variant="primary" size="md">
+        Continue
+      </Button>
+    </MotionProvider>
+  );
+}
+```
+
+## As child (polymorphic)
+
+```tsx
+import Link from 'next/link';
+import { Button } from '@id-components/core';
+
+<Button asChild variant="ghost">
+  <Link href="/docs">Back to docs</Link>
+</Button>
+```

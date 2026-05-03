@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config *)",
+      "WebFetch(domain:registry.npmjs.org)",
+      "Bash(pnpm install *)",
+      "Bash(pnpm info *)",
+      "Bash(node -e \"const m = require\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-mdx/dist/index.js'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(node --input-type=module -e \"import m from 'd:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-mdx/dist/config/index.js'; console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(node -e \"const m = require\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-mdx/dist/config/index.js'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(node -e \"const m = require\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-ui/dist/provider.js'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(node -e \"const p = require\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-ui/package.json'\\); console.log\\(JSON.stringify\\(Object.keys\\(p.exports\\).filter\\(k => k.includes\\('provider'\\) || k.includes\\('layout'\\) || k.includes\\('page'\\)\\), null, 2\\)\\)\")",
+      "Bash(pnpm --filter \"@id-components/utils\" --filter \"@id-components/tokens\" --filter \"@id-components/motion\" --filter \"@id-components/core\" build)",
+      "Bash(pnpm --filter \"@id-components/motion\" build)",
+      "Bash(pnpm --filter \"@id-components/core\" build)",
+      "Bash(pnpm --filter \"@id-components/utils\" --filter \"@id-components/tokens\" --filter \"@id-components/motion\" --filter \"@id-components/core\" typecheck)",
+      "Bash(pnpm --filter \"@id-components/core\" typecheck)",
+      "Bash(pnpm lint *)",
+      "Bash(pnpm format *)",
+      "Bash(pnpm exec *)",
+      "Bash(git -C \"d:/work/indepth/ID-Components\" status)",
+      "Bash(pnpm --filter @id-components/docs install)",
+      "Bash(pnpm build *)",
+      "Bash(node -e \"const m = require\\('d:/work/indepth/ID-Components/apps/docs/node_modules/fumadocs-core/dist/source/index.js'\\); console.log\\(Object.keys\\(m\\)\\)\")"
+    ]
+  }
+}

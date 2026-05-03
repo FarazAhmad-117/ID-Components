@@ -1,0 +1,18 @@
+---
+description: Tailwind CSS v4 usage rules for ID-Components
+alwaysApply: true
+---
+
+Use Tailwind v4 utilities **only**. No `tailwind.config.js` or `tailwind.config.ts` — ever.
+
+Theme tokens live in `packages/tokens/src/tokens.css` inside an `@theme {}` block. Reference them
+through CSS variables in Tailwind utilities: `text-[var(--color-accent-500)]`, or via the
+`@theme` aliases if defined (e.g., `bg-accent-500`).
+
+Global CSS entry point pattern:
+```css
+@import 'tailwindcss';
+@import '@id-components/tokens/tokens.css';
+```
+
+Never use `theme()` or `config()` functions — they belong to Tailwind v3.

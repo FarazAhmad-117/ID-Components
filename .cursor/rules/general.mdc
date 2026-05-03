@@ -1,0 +1,14 @@
+---
+description: General project conventions for ID-Components
+alwaysApply: true
+---
+
+See [AGENTS.md](../../AGENTS.md) for the full source of truth on project conventions, stack,
+and the component definition of done.
+
+Key rules at a glance:
+- No Husky, lint-staged, changesets, commitlint, or semantic-release.
+- No CSS-in-JS of any kind.
+- No new tooling added to the stack without explicit discussion first.
+- All packages: TypeScript strict, ESM-only output via tsup.
+- Lint + format: Biome only (no ESLint, no Prettier).
